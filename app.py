@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, send_from_directory
 import os
 
 app = Flask(__name__)
@@ -8,12 +8,12 @@ UNITY_BUILD_PATH = os.path.join(os.path.dirname(__file__), 'unity_build')
 
 @app.route('/')
 def index():
-    """Главная страница с Unity WebGL билдом"""
-    return render_template('index.html')
+    """Главная страница - index.html из Unity build"""
+    return send_from_directory(UNITY_BUILD_PATH, 'index.html')
 
-@app.route('/unity_build/<path:filename>')
-def unity_files(filename):
-    """Обслуживание файлов Unity build"""
+@app.route('/<path:filename>')
+def serve_build_files(filename):
+    """Обслуживание всех файлов Unity build"""
     return send_from_directory(UNITY_BUILD_PATH, filename)
 
 @app.route('/health')
