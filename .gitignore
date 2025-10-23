@@ -8,6 +8,7 @@ env/
 venv/
 ENV/
 build/
+!unity_build/Build/
 develop-eggs/
 dist/
 downloads/
