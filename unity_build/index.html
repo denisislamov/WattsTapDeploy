@@ -50,7 +50,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.6",
+        productVersion: "0.1.7",
       };
 
       const container = document.querySelector("#unity-container");
@@ -187,21 +187,7 @@
           var telegramId = '1234567890';
           var telegramUserName = 'TestUser';
           var initData = '';
-
-          return;
-          
-          var isIOS = /iPad|iPhone|iPod/i.test(window.navigator.userAgent || '');
-          if (isIOS) {
-              console.warn('iOS detected: skipping Telegram init code to prevent crashes.');
-              var fallbackSafeArea = '0,0,0,0,0';
-              MyGameInstance.SendMessage('TelegramService', 'ReceiveUserId', telegramId);
-              MyGameInstance.SendMessage('TelegramService', 'ReceiveUserName', telegramUserName);
-              MyGameInstance.SendMessage('TelegramService', 'ReceiveInitData', initData);
-              MyGameInstance.SendMessage('TelegramService', 'ReceiveSafeAreaInsets', fallbackSafeArea);
-              MyGameInstance.SendMessage('TelegramService', 'ReceiveAppEnvironment', 'MobileWeb');
-              return;
-          }
-
+ 
           if (window.Telegram && window.Telegram.WebApp) {
               if (window.Telegram.WebApp.initData) {
                   initData = window.Telegram.WebApp.initData;
