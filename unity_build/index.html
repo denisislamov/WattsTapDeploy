@@ -42,11 +42,11 @@
       //const invisibleButton = document.getElementById('invisible-button');
       const hideFullScreenButton = "";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/531eb2f63192af19b8a3c13419075688.loader.js";
+      const loaderUrl = buildUrl + "/f03380f4e831f364df15dcdc0eed8b2d.loader.js";
       const config = {
-        dataUrl: buildUrl + "/aa89bb6acfba4bddbb37f02cec5c1383.data",
+        dataUrl: buildUrl + "/2a3c244129c3eec60cf05dfa368bd458.data",
         frameworkUrl: buildUrl + "/0ef490f3c47238a6698763ca91d839f3.framework.js",
-        codeUrl: buildUrl + "/7779315ca3932e5099105a27156e8cc1.wasm",
+        codeUrl: buildUrl + "/c1a23c6f11a72509d0c7faf62cedd77f.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
@@ -188,6 +188,33 @@
           var telegramUserName = 'TestUser';
           var initData = '';
           var startParam = '';  // Referral code from deep link
+          
+          // Debug: Log all Telegram WebApp data
+          var debugInfo = 'Telegram WebApp Debug Info:\n';
+          if (window.Telegram && window.Telegram.WebApp) {
+              var webApp = window.Telegram.WebApp;
+              debugInfo += 'Platform: ' + (webApp.platform || 'unknown') + '\n';
+              debugInfo += 'Version: ' + (webApp.version || 'unknown') + '\n';
+              debugInfo += 'initData: ' + (webApp.initData ? 'present (' + webApp.initData.length + ' chars)' : 'empty') + '\n';
+              
+              if (webApp.initDataUnsafe) {
+                  debugInfo += 'initDataUnsafe.start_param: ' + (webApp.initDataUnsafe.start_param || 'none') + '\n';
+                  debugInfo += 'initDataUnsafe.query_id: ' + (webApp.initDataUnsafe.query_id || 'none') + '\n';
+                  if (webApp.initDataUnsafe.user) {
+                      debugInfo += 'initDataUnsafe.user.id: ' + (webApp.initDataUnsafe.user.id || 'none') + '\n';
+                      debugInfo += 'initDataUnsafe.user.username: ' + (webApp.initDataUnsafe.user.username || 'none') + '\n';
+                  } else {
+                      debugInfo += 'initDataUnsafe.user: none\n';
+                  }
+              } else {
+                  debugInfo += 'initDataUnsafe: not available\n';
+              }
+          } else {
+              debugInfo += 'Telegram.WebApp: NOT AVAILABLE\n';
+          }
+          
+          console.log('[TelegramWebApp] ' + debugInfo);
+          alert(debugInfo);
  
           if (window.Telegram && window.Telegram.WebApp) {
               if (window.Telegram.WebApp.initData) {
