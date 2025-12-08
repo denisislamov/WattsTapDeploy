@@ -42,15 +42,15 @@
       //const invisibleButton = document.getElementById('invisible-button');
       const hideFullScreenButton = "";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/9c0f8c8efacf4df6d8200102907676ea.loader.js";
+      const loaderUrl = buildUrl + "/549c3a88116cac22690f4bf4da40150e.loader.js";
       const config = {
-        dataUrl: buildUrl + "/52e6007b67d4be85f363f7934b617067.data",
-        frameworkUrl: buildUrl + "/7933563d966dae4c2c196358d7a0eb62.framework.js",
-        codeUrl: buildUrl + "/47e4f0dc77685ea4788bb9662287821d.wasm",
+        dataUrl: buildUrl + "/94ff1de1fa478c5556e7e09ade4201e7.data",
+        frameworkUrl: buildUrl + "/0ef490f3c47238a6698763ca91d839f3.framework.js",
+        codeUrl: buildUrl + "/74977ead759ff8e29f5eefd6efeef2c2.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.16",
+        productVersion: "0.1.17",
       };
 
       const container = document.querySelector("#unity-container");
@@ -187,16 +187,20 @@
           var telegramId = '1234567890';
           var telegramUserName = 'TestUser';
           var initData = '';
+          var startParam = '';  // Referral code from deep link
  
           if (window.Telegram && window.Telegram.WebApp) {
               if (window.Telegram.WebApp.initData) {
                   initData = window.Telegram.WebApp.initData;
-                  // alert("initData " + initData); 
+                  alert("initData " + initData); 
 
                   // Parse initData string to extract user parameter
                   try {
                       var urlParams = new URLSearchParams(initData);
                       var userParam = urlParams.get('user');
+                      
+                      // Parse start_param (referral code from deep link t.me/bot?start=REF_CODE)
+                      startParam = urlParams.get('start_param') || '';
 
                       if (userParam) {
                           // Decode URL-encoded string and parse JSON
@@ -224,6 +228,7 @@
           MyGameInstance.SendMessage('TelegramService', 'ReceiveUserId', telegramId);
           MyGameInstance.SendMessage('TelegramService', 'ReceiveUserName', telegramUserName);
           MyGameInstance.SendMessage('TelegramService', 'ReceiveInitData', initData);
+          MyGameInstance.SendMessage('TelegramService', 'ReceiveStartParam', startParam);
 
           // Get contentSafeAreaInset top value (for Android close/burger buttons)
           var contentSafeAreaTop = 0;
