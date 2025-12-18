@@ -5,36 +5,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>WattsTapUnityClient</title>
-      <style>
-          /*#invisible-button {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: transparent;
-              border: none;
-              cursor: pointer;
-              z-index: 10;
-          }*/
-      </style>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="https://telegram.org/js/telegram-web-app.js">
     </script>
   </head>
   <body class="dark">
-    <!--<button id="invisible-button"></button>-->
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>
     </div>
     <div id="loading-cover" style="display:none;">
         <div id="unity-loading-bar">
-            <div id="unity-logo"><img src="logo.png"></div>
-            <div id="unity-progress-bar-empty" style="display: none;">
-                <div id="unity-progress-bar-full"></div>
+            <div id="unity-logo"><img src="logo_main.png" alt="Logo"></div>
+            <div class="loader-section">
+                <div class="spinner-container">
+                    <div class="spinner"><img src="loader.png" alt="Loading"></div>
+                    <div class="spinner-inner"><img src="loader_inner.png" alt=""></div>
+                </div>
+                <div class="loading-text">Loading...</div>
             </div>
-            <div class="spinner"></div>
         </div>
     </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
@@ -42,15 +31,15 @@
       //const invisibleButton = document.getElementById('invisible-button');
       const hideFullScreenButton = "";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/0f01f3e9ff4a52a71eb09b476d47e393.loader.js";
+      const loaderUrl = buildUrl + "/1bd36008e6481db32594de0b4ec7272d.loader.js";
       const config = {
-        dataUrl: buildUrl + "/c14494f2faf9b696b02d49b4bf05d02b.data",
+        dataUrl: buildUrl + "/dddac1b832c42b016a28c26e7218515c.data",
         frameworkUrl: buildUrl + "/b2f00ae0733986b2ae6b5418da8139fd.framework.js",
-        codeUrl: buildUrl + "/dc00a8365f3241fa7ed4ce660cdfae85.wasm",
+        codeUrl: buildUrl + "/cdcb1dc9a9f8c6fe1b7b38d3f1ac78d7.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.29",
+        productVersion: "0.1.30",
       };
 
       const container = document.querySelector("#unity-container");
@@ -143,9 +132,7 @@
           }
 
         createUnityInstance(canvas, config, (progress) => {
-          spinner.style.display = "none";
-          progressBarEmpty.style.display = "";
-          progressBarFull.style.width = `${100 * progress}%`;
+          // Progress callback - spinner continues spinning until fully loaded
         }).then((unityInstance) => {
           MyGameInstance = unityInstance;
 
