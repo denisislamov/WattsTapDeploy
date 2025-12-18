@@ -9,6 +9,7 @@ body {
     min-height: 100%;
     width: 100%;
     background: #1a1a1a;
+    color: #ffffff;
 }
 
 @font-face {
@@ -89,12 +90,10 @@ body {
     object-fit: contain;
 }
 
-#unity-progress-bar-empty {
-    display: none;
-}
-
+/* Hide default Unity progress bar */
+#unity-progress-bar-empty,
 #unity-progress-bar-full {
-    display: none;
+    display: none !important;
 }
 
 .loader-section {
@@ -107,21 +106,22 @@ body {
 
 .spinner-container {
     position: relative;
-    width: min(12vw, 50px);
-    height: min(12vw, 50px);
-    margin-bottom: 3vh;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
 }
 
 .spinner {
     width: 100%;
     height: 100%;
-    animation: spinner-spin 3s infinite linear;
+    animation: spinner-spin 2s infinite linear;
 }
 
 .spinner img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    display: block;
 }
 
 .spinner-inner {
@@ -129,15 +129,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
-    height: 40%;
-    animation: none;
+    width: 16px;
+    height: 16px;
 }
 
 .spinner-inner img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    display: block;
 }
 
 @keyframes spinner-spin {
@@ -152,18 +152,39 @@ body {
 .loading-text {
     color: #ffffff !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: min(4vw, 16px);
-    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
     letter-spacing: 0.5px;
     text-align: center;
+    -webkit-text-fill-color: #ffffff;
 }
 
-/* Hide default Unity loading spinner */
+/* Hide any default Unity loading elements */
 .unity-loader-small,
 .unity-loader,
+.spinner-container .unity-loader,
 #unity-progress-bar-empty,
 #unity-progress-bar-full {
     display: none !important;
+}
+
+/* Mobile specific fixes */
+@media screen and (max-width: 768px) {
+    .spinner-container {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .spinner-inner {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .loading-text {
+        font-size: 13px;
+    }
 }
 
 #unity-fullscreen-button {
