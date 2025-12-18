@@ -104,6 +104,20 @@ body {
     padding-bottom: 2vh;
 }
 
+.spinner1 {
+    width: 100%;
+    height: 100%;
+    animation: spinner-spin 2s infinite linear;
+    display: none;
+}
+
+.spinner1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
 .spinner-container {
     position: relative;
     width: 40px;
@@ -111,13 +125,13 @@ body {
     margin-bottom: 20px;
 }
 
-.spinner {
+.spinner2 {
     width: 100%;
     height: 100%;
     animation: spinner-spin 2s infinite linear;
 }
 
-.spinner img {
+.spinner2 img {
     width: 100%;
     height: 100%;
     object-fit: contain;
