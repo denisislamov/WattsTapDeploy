@@ -19,13 +19,13 @@
             <div id="unity-logo"><img src="logo_main.png" alt="Logo"></div>
             
             <div id="unity-progress-bar-empty" style="display: none;">
-                <div id="unity-progress-bar-full"  style="display: none;"></div>
+                <div id="unity-progress-bar-full" style="display: none;"></div>
             </div>
-            <div class="spinner" style="display: none;"></div>
+            <div class="spinner_old" style="display: none;"></div>
             
             <div class="loader-section">
                 <div class="spinner-container">
-                    <div class="spinner2"><img src="loader.png" alt="Loading"></div>
+                    <div class="spinner"><img src="loader.png" alt="Loading"></div>
                     <div class="spinner-inner"><img src="loader_inner.png" alt=""></div>
                 </div>
                 <div class="loading-text">Loading...</div>
@@ -54,7 +54,7 @@
       const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
       const progressBarFull = document.querySelector("#unity-progress-bar-full");
       const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      const spinner = document.querySelector('.spinner');
+      const spinner = document.querySelector('.spinner_old');
 
       var MyGameInstance = null;
 
@@ -138,10 +138,6 @@
           }
 
         createUnityInstance(canvas, config, (progress) => {
-            spinner.style.display = "none";
-            progressBarEmpty.style.display =  "none";
-            progressBarFull.style.display =  "none";
-            
           // Progress callback - spinner continues spinning until fully loaded
         }).then((unityInstance) => {
           MyGameInstance = unityInstance;
