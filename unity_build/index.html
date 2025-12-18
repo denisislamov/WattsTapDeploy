@@ -17,12 +17,6 @@
     <div id="loading-cover" style="display:none;">
         <div id="unity-loading-bar">
             <div id="unity-logo"><img src="logo_main.png" alt="Logo"></div>
-            
-            <div id="unity-progress-bar-empty" style="display: none;">
-                <div id="unity-progress-bar-full" style="display: none;"></div>
-            </div>
-            <div class="spinner_old" style="display: none;"></div>
-            
             <div class="loader-section">
                 <div class="spinner-container">
                     <div class="spinner"><img src="loader.png" alt="Loading"></div>
@@ -39,23 +33,20 @@
       const buildUrl = "Build";
       const loaderUrl = buildUrl + "/1bd36008e6481db32594de0b4ec7272d.loader.js";
       const config = {
-        dataUrl: buildUrl + "/dc49c49de1cae7c595d73fdcca23396d.data",
+        dataUrl: buildUrl + "/6dfd51a82df21db85b2b83fdceb57b11.data",
         frameworkUrl: buildUrl + "/b2f00ae0733986b2ae6b5418da8139fd.framework.js",
         codeUrl: buildUrl + "/cdcb1dc9a9f8c6fe1b7b38d3f1ac78d7.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.33",
+        productVersion: "0.1.34",
       };
 
       const container = document.querySelector("#unity-container");
       const canvas = document.querySelector("#unity-canvas");
       const loadingCover = document.querySelector("#loading-cover");
-      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-      const progressBarFull = document.querySelector("#unity-progress-bar-full");
       const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      const spinner = document.querySelector('.spinner_old');
-
+     
       var MyGameInstance = null;
 
       function detectTelegramEnvironment() {
@@ -138,7 +129,6 @@
           }
 
         createUnityInstance(canvas, config, (progress) => {
-          // Progress callback - spinner continues spinning until fully loaded
         }).then((unityInstance) => {
           MyGameInstance = unityInstance;
 
