@@ -61,6 +61,8 @@
 
         #unity-loading-bar {
             flex: 1 1 auto;
+            margin: 0;
+            top: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -68,6 +70,7 @@
         }
         #unity-logo {
             text-align: center;
+            margin-top: 30%;
         }
         #unity-logo img {
             max-width: 80%;
@@ -142,7 +145,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 33vh;
+            margin-top: 25vh;
         }
 
         .spinner2 img {
@@ -199,13 +202,13 @@
     const buildUrl = "Build";
     const loaderUrl = buildUrl + "/1bd36008e6481db32594de0b4ec7272d.loader.js";
     const config = {
-        dataUrl: buildUrl + "/e5806cd8c85eda2d8ffafc5abf81bbcc.data",
+        dataUrl: buildUrl + "/fe85112982c8129dc38ad395306d03ee.data",
         frameworkUrl: buildUrl + "/b2f00ae0733986b2ae6b5418da8139fd.framework.js",
         codeUrl: buildUrl + "/cdcb1dc9a9f8c6fe1b7b38d3f1ac78d7.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.42",
+        productVersion: "0.1.43",
     };
 
     const container = document.querySelector("#unity-container");
