@@ -34,14 +34,7 @@
         <div id="unity-progress-bar-empty" style="display: none;">
             <div id="unity-progress-bar-full" style="display: none;"></div>
         </div>
-        <div class="spinner" style="display: none;"></div>
-    </div>
-    <div id="loader-bottom">
-        <img src="loader.png">
-        <img src="loader_inner.png" class="loader-inner">
-    </div>
-    <div id="loading-text">
-        <img src="loading_text.png">
+        <div class="spinner"><img src="loader.png"></div>
     </div>
 </div>
 <div id="unity-fullscreen-button" style="display: none;"></div>
@@ -51,13 +44,13 @@
     const buildUrl = "Build";
     const loaderUrl = buildUrl + "/1bd36008e6481db32594de0b4ec7272d.loader.js";
     const config = {
-        dataUrl: buildUrl + "/4e4626490e2e67d740ca01a609880b34.data",
+        dataUrl: buildUrl + "/1cbf83804d318083d4dc8a812ca32d66.data",
         frameworkUrl: buildUrl + "/b2f00ae0733986b2ae6b5418da8139fd.framework.js",
         codeUrl: buildUrl + "/cdcb1dc9a9f8c6fe1b7b38d3f1ac78d7.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.37",
+        productVersion: "0.1.41",
     };
 
     const container = document.querySelector("#unity-container");
@@ -150,9 +143,9 @@
         }
 
         createUnityInstance(canvas, config, (progress) => {
-            spinner.style.display = "none";
+            spinner.style.display = "";
             progressBarEmpty.style.display = "none";
-            //progressBarFull.style.width = `${100 * progress}%`;
+            progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
             MyGameInstance = unityInstance;
 
@@ -221,12 +214,12 @@
         }
 
         console.log('[TelegramWebApp] ' + debugInfo);
-        // alert(debugInfo);
+        alert(debugInfo);
 
         if (window.Telegram && window.Telegram.WebApp) {
             if (window.Telegram.WebApp.initData) {
                 initData = window.Telegram.WebApp.initData;
-                // alert("initData " + initData);
+                alert("initData " + initData);
 
                 // Parse initData string to extract user parameter
                 try {
