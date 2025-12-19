@@ -51,13 +51,13 @@
     const buildUrl = "Build";
     const loaderUrl = buildUrl + "/1bd36008e6481db32594de0b4ec7272d.loader.js";
     const config = {
-        dataUrl: buildUrl + "/535774243cd5067eebf4b90929dd1d53.data",
+        dataUrl: buildUrl + "/c8dca60c6cccd8faef99fe7c9b125f51.data",
         frameworkUrl: buildUrl + "/b2f00ae0733986b2ae6b5418da8139fd.framework.js",
         codeUrl: buildUrl + "/cdcb1dc9a9f8c6fe1b7b38d3f1ac78d7.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WattsTapUnityClient",
-        productVersion: "0.1.35",
+        productVersion: "0.1.36",
     };
 
     const container = document.querySelector("#unity-container");
@@ -221,12 +221,12 @@
         }
 
         console.log('[TelegramWebApp] ' + debugInfo);
-        alert(debugInfo);
+        // alert(debugInfo);
 
         if (window.Telegram && window.Telegram.WebApp) {
             if (window.Telegram.WebApp.initData) {
                 initData = window.Telegram.WebApp.initData;
-                alert("initData " + initData);
+                // alert("initData " + initData);
 
                 // Parse initData string to extract user parameter
                 try {
